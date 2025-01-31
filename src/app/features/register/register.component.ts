@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
+import { AuthService } from '../../core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
   standalone: false,
-  
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
   persona = {
@@ -15,20 +16,21 @@ export class RegisterComponent {
     direccion: '',
     username: '',
     password: '',
-    esPatron: false
+    esPatron: false,
   };
 
   error: string | null = null;
 
-  onSubmit() {
-    if (!this.persona.nombre || !this.persona.apellidos || !this.persona.username || !this.persona.password) {
-      this.error = "Por favor, completa todos los campos obligatorios.";
-      return;
-    }
-    
-    this.error = null;
-    console.log("Datos enviados:", this.persona);
+  constructor(private auth: AuthService, private router: Router) {}
 
-    // Aquí podrías hacer la llamada al backend para registrar a la persona.
+  onSubmit() {
+    this.auth.register(this.persona).subscribe({
+      next: () => {
+        this.router.navigate(['/login']); // Redirigir al login después del registro
+      },
+      error: () => {
+        this.error = 'Error al registrar usuario'; // Mostrar mensaje de error
+      },
+    });
   }
 }

@@ -1,38 +1,57 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { AuthService } from './auth.service';
 import { environment } from '../../../environments/environment';
 
-
 @Injectable({
- providedIn: 'root'
+  providedIn: 'root'
 })
 export class ViajesService {
 
+  constructor(private http: HttpClient, private authService: AuthService) {}
 
- constructor(private http: HttpClient, private authService: AuthService) { }
+  /**
+   * Método para obtener los viajes desde la API.
+   * @returns Observable que emite la lista de viajes.
+   */
+  fetchViajes(): Observable<any> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return throwError(() => new Error('Unauthorized'));
+    }
 
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.get(`${environment.apiUrl}/viajes`, { headers });
+  }
 
- /**
-  * Método para obtener las regiones desde la API.
-  * @returns Observable que emite la lista de regiones.
-  */
- fetchViajes(): Observable<any> {
-   const token = this.authService.getToken(); // Obtén el token del AuthService
+  /**
+   * Método para eliminar un viaje por ID.
+   * @param viajeId El ID del viaje a eliminar.
+   * @returns Observable de la respuesta del servidor.
+   */
+  deleteViaje(viajeId: number): Observable<any> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return throwError(() => new Error('Unauthorized'));
+    }
 
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+    return this.http.delete(`${environment.apiUrl}/viajes/${viajeId}`, { headers });
+  }
 
-   if (!token) {
-     // Si no hay token, lanza un error indicando que el usuario no está autorizado.
-     return throwError(() => new Error('Unauthorized'));
-   }
+  /**
+   * Método para crear un nuevo viaje.
+   * @param viaje Los datos del viaje a crear.
+   * @returns Observable con la respuesta del servidor.
+   */
+  createViaje(viaje: any): Observable<any> {
+    const token = this.authService.getToken();
+    if (!token) {
+      return throwError(() => new Error('Unauthorized'));
+    }
 
-
-   // Realiza la solicitud GET al endpoint de viajes con el token en el encabezado.
-   return this.http.get(`${environment.apiUrl}/viajes`, {
-     headers: new HttpHeaders({
-       Authorization: `Bearer ${token}`,
-     }),
-   });
- }
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`).set('Content-Type', 'application/json');
+    return this.http.post(`${environment.apiUrl}/viajes`, viaje, { headers });
+  }
 }

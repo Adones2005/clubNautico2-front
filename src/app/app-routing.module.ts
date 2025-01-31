@@ -7,6 +7,7 @@ import { Error404Component } from './features/error404/error404.component';
 import { ViajesComponent } from './features/viajes/viajes.component';
 import { authGuard } from './core/guards/auth.guard';
 import { RegisterComponent } from './features/register/register.component';
+import { ViajeFormularioComponent } from './features/viaje-formulario/viaje-formulario.component';
 
 export const routes: Routes = [
   {
@@ -24,6 +25,11 @@ export const routes: Routes = [
   {
     path: 'viajes', // Página protegida
     component: ViajesComponent,
+    canActivate: [authGuard],
+  },
+  {
+    path: 'viaje-formulario', // Página protegida
+    component: ViajeFormularioComponent,
     canActivate: [authGuard],
   },
   {

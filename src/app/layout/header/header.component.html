@@ -1,13 +1,22 @@
 <header class="main-header">
-    <div class="logo">
-      <a href="/">Club Nautico</a>
-    </div>
-    <nav class="navigation">
-      <ul class="nav-links">
-        <li><a href="/">Inicio</a></li>
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/register">Register</a></li>
-        <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
-      </ul>
-    </nav>
-   </header>
+  <div class="logo">
+    <a href="/">Club Nautico</a>
+  </div>
+  <nav class="navigation">
+    <ul class="nav-links">
+      <li><a href="/">Inicio</a></li>
+
+      <!-- Contenedor que agrupa las rutas y las centra -->
+      <div class="routes">
+        <li *ngIf="!isLoggedIn"><a routerLink="/viajes">Viajes</a></li>
+      </div>
+
+      <!-- Mostrar 'Login' y 'Register' solo si el usuario no está logueado -->
+      <li *ngIf="!isLoggedIn"><a routerLink="/login">Login</a></li>
+      <li *ngIf="!isLoggedIn"><a routerLink="/register">Register</a></li>
+
+      <!-- Mostrar 'Logout' solo si el usuario está logueado -->
+      <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
+    </ul>
+  </nav>
+</header>

@@ -31,6 +31,19 @@ export class AuthService {
    );
  }
 
+/**
+ * Método para registrar una nueva persona.
+ * @param persona - Objeto con los datos de la persona.
+ * @returns Observable con la respuesta del servidor.
+ */
+register(persona: any): Observable<any> {
+  return this.http.post<any>(
+    `${environment.apiUrl}/v1/register`,
+    persona,
+    { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) }
+  );
+}
+
 
  /**
   * Almacena el token de autenticación en el BehaviorSubject.
@@ -68,6 +81,8 @@ export class AuthService {
    this.token.next(null); // Limpia el token almacenado.
    this.router.navigate(['/']); // Redirige al usuario a la ruta raíz.
  }
+
+ 
 }
 
 

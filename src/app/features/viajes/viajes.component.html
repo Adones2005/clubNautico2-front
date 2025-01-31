@@ -1,18 +1,32 @@
 <div class="viajes-container">
-    <h2>Viajes Organizados</h2>
-    <table class="viajes-table">
+  <div class="header-actions">
+      <button class="add-viaje-btn" (click)="irAFormulario()">Añadir Viaje</button>
+  </div>
+  <h2>Viajes Organizados</h2>
+  <table class="viajes-table">
       <thead>
-        <tr>
-          <th>ID</th>
-          <th>Nombre</th>
-        </tr>
+          <tr>
+              <th>ID</th>
+              <th>Descripcion</th>
+              <th>Organizador</th>
+              <th>Fecha</th>
+              <th>Barco</th>
+              <th>Acciones</th> <!-- Nueva columna para las acciones -->
+          </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let viaje of viajes">
-          <td>{{ viaje.id }}</td>
-          <td>{{ viaje.name }}</td>
-        </tr>
+          <tr *ngFor="let viaje of viajes">
+              <td>{{ viaje.id }}</td>
+              <td>{{ viaje.descripcion }}</td>
+              <td>{{ viaje.organizador.username }}</td>
+              <td>{{ viaje.fechaHora }}</td>
+              <td>{{ viaje.barco.nombre }}</td>
+              <td class="actions">
+                  <button class="edit-btn" (click)="editarViaje(viaje.id)">Editar</button>
+                  <button class="delete-btn" (click)="eliminarViaje(viaje.id)">Eliminar</button>
+              </td>
+          </tr>
       </tbody>
-    </table>
-    <p *ngIf="error" class="error-message">{{ error }}</p>
-   </div>
+  </table>
+  <p *ngIf="error" class="error-message">{{ error }}</p>
+</div>

@@ -1,7 +1,7 @@
 /* Contenedor principal */
-.login-container {
+.viaje-container {
     width: 100%;
-    max-width: 400px;
+    max-width: 500px;
     margin: 50px auto;
     padding: 20px;
     background-color: #f9f9f9;
@@ -9,48 +9,44 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     text-align: center;
     font-family: Arial, sans-serif;
-   }
-   
-   
-   .login-container h2 {
+}
+
+.viaje-container h2 {
     margin-bottom: 20px;
     font-size: 1.8rem;
     color: #333;
-   }
-   
-   
-   /* Formulario */
-   .login-form {
+}
+
+/* Formulario */
+.viaje-form {
     display: flex;
     flex-direction: column;
     gap: 15px;
-   }
-   
-   
-   /* Grupo de campos */
-   .form-group {
+}
+
+/* Grupo de campos */
+.form-group {
     position: relative;
-   }
-   
-   
-   .form-group input {
+}
+
+.form-group input,
+.form-group select {
     width: 80%;
     padding: 12px 15px;
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 4px;
     transition: border-color 0.3s ease;
-   }
-   
-   
-   .form-group input:focus {
+}
+
+.form-group input:focus,
+.form-group select:focus {
     border-color: #141a3a;
     outline: none;
-   }
-   
-   
-   /* Botón */
-   .login-button {
+}
+
+/* Botón */
+.viaje-button {
     padding: 12px 20px;
     font-size: 1rem;
     font-weight: bold;
@@ -60,18 +56,15 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-   }
-   
-   
-   .login-button:hover {
+}
+
+.viaje-button:hover {
     background-color: #141a3a;
-   }
-   
-   
-   /* Mensaje de error */
-   .error-message {
+}
+
+/* Mensaje de error */
+.error-message {
     margin-top: 15px;
     color: #d32f2f;
     font-size: 0.9rem;
-   }
-   
+}

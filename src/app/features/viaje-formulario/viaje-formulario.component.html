@@ -1,0 +1,59 @@
+<div class="viaje-container">
+    <h2>Registrar Viaje</h2>
+    <form (ngSubmit)="onSubmit()" class="viaje-form">
+  
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Descripción"
+          [(ngModel)]="viaje.descripcion"
+          name="descripcion"
+          aria-label="Descripción"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <input
+          type="datetime-local"
+          placeholder="Fecha y Hora"
+          [(ngModel)]="viaje.fechaHora"
+          name="fechaHora"
+          aria-label="Fecha y Hora"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <label for="organizador">Seleccionar Organizador</label>
+        <select
+          id="organizador"
+          [(ngModel)]="viaje.organizador"
+          name="organizador"
+          aria-label="Organizador"
+          required
+        >
+          <option value="" disabled selected>Seleccionar...</option>
+          <option *ngFor="let persona of personas" [value]="persona.id">{{ persona.nombre }} {{ persona.apellidos }}</option>
+        </select>
+      </div>
+  
+      <div class="form-group">
+        <label for="barco">Seleccionar Barco</label>
+        <select
+          id="barco"
+          [(ngModel)]="viaje.barco"
+          name="barco"
+          aria-label="Barco"
+        >
+          <option value="" disabled selected>Seleccionar...</option>
+          <option *ngFor="let barco of barcos" [value]="barco.id">{{ barco.nombre }}</option>
+        </select>
+      </div>
+  
+      <button type="submit" class="viaje-button">Registrar Viaje</button>
+    </form>
+  
+    <p *ngIf="error" class="error-message">{{ error }}</p>
+  </div>
+  

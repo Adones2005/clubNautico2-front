@@ -14,6 +14,7 @@ import { LoginComponent } from './features/login/login.component'; // Importar L
 import { ViajesComponent } from './features/viajes/viajes.component';
 import { provideHttpClient } from '@angular/common/http';
 import { RegisterComponent } from './features/register/register.component';
+import { ViajeFormularioComponent } from './features/viaje-formulario/viaje-formulario.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { RegisterComponent } from './features/register/register.component';
     LoginComponent, // Declarar LoginComponent aquí
     ViajesComponent,
     RegisterComponent,
+    ViajeFormularioComponent,
   ],
   imports: [
     BrowserModule,

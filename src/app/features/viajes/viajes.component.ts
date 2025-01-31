@@ -14,6 +14,44 @@ export class ViajesComponent implements OnInit {
 
   constructor(private viajesService: ViajesService, private router: Router) {} // Inyecta el servicio ViajesService y el Router
 
+
+  irAFormulario() {
+    // Redirige al formulario para añadir un viaje
+    this.router.navigate(['/viaje-formulario']);
+  }
+
+  editarViaje(viajeId: number) {
+    // Lógica para editar el viaje con el id proporcionado
+    console.log('Editar viaje con ID: ', viajeId);
+  }
+  
+  eliminarViaje(viajeId: number) {
+    // Muestra el cuadro de confirmación
+    const confirmar = confirm("¿Estás seguro de eliminar el viaje?");
+    
+    // Si el usuario confirma la eliminación, se ejecuta el código de eliminación
+    if (confirmar) {
+      // Llama al servicio para eliminar el viaje
+      this.viajesService.deleteViaje(viajeId).subscribe({
+        next: () => {
+          // Si la eliminación es exitosa, actualiza la lista de viajes
+          this.viajes = this.viajes.filter(viaje => viaje.id !== viajeId);
+          console.log(`Viaje con ID ${viajeId} eliminado.`);
+        },
+        error: (err) => {
+          // Maneja cualquier error
+          console.error('Error al eliminar el viaje:', err);
+          if (err.status === 403) {
+            this.router.navigate(['/forbidden']);
+          } else {
+            this.error = 'An error occurred while deleting the trip';
+          }
+        }
+      });
+    }
+  }
+  
+
   ngOnInit() {
     // Llama al servicio para obtener los viajes mediante un observable
     this.viajesService.fetchViajes().subscribe({
