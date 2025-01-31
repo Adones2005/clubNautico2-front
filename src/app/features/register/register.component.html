@@ -1,0 +1,82 @@
+<div class="register-container">
+    <h2>Registro</h2>
+    <form (ngSubmit)="onSubmit()" class="register-form">
+      
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Nombre"
+          [(ngModel)]="persona.nombre"
+          name="nombre"
+          aria-label="Nombre"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Apellidos"
+          [(ngModel)]="persona.apellidos"
+          name="apellidos"
+          aria-label="Apellidos"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Teléfono"
+          [(ngModel)]="persona.telefono"
+          name="telefono"
+          aria-label="Teléfono"
+        />
+      </div>
+  
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Dirección"
+          [(ngModel)]="persona.direccion"
+          name="direccion"
+          aria-label="Dirección"
+        />
+      </div>
+  
+      <div class="form-group">
+        <input
+          type="text"
+          placeholder="Usuario"
+          [(ngModel)]="persona.username"
+          name="username"
+          aria-label="Usuario"
+          required
+        />
+      </div>
+  
+      <div class="form-group">
+        <input
+          type="password"
+          placeholder="Contraseña"
+          [(ngModel)]="persona.password"
+          name="password"
+          aria-label="Contraseña"
+          required
+        />
+      </div>
+  
+      <div class="form-group checkbox-group">
+        <label>
+            ¿Es patrón?
+          <input type="checkbox" [(ngModel)]="persona.esPatron" name="esPatron" />
+        </label>
+      </div>
+  
+      <button type="submit" class="register-button">Registrarse</button>
+    </form>
+  
+    <p *ngIf="error" class="error-message">{{ error }}</p>
+  </div>
+  
+

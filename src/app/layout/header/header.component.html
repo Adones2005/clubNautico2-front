@@ -5,8 +5,8 @@
     <nav class="navigation">
       <ul class="nav-links">
         <li><a href="/">Inicio</a></li>
-        <li *ngIf="isLoggedIn"><a routerLink="/viajes">viajes</a></li>
         <li><a routerLink="/login">Login</a></li>
+        <li><a routerLink="/register">Register</a></li>
         <li *ngIf="isLoggedIn"><a (click)="logout()">Logout</a></li>
       </ul>
     </nav>

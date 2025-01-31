@@ -13,6 +13,7 @@ import { Error404Component } from './features/error404/error404.component';
 import { LoginComponent } from './features/login/login.component'; // Importar LoginComponent
 import { ViajesComponent } from './features/viajes/viajes.component';
 import { provideHttpClient } from '@angular/common/http';
+import { RegisterComponent } from './features/register/register.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { provideHttpClient } from '@angular/common/http';
     Error404Component,
     LoginComponent, // Declarar LoginComponent aquí
     ViajesComponent,
+    RegisterComponent,
   ],
   imports: [
     BrowserModule,

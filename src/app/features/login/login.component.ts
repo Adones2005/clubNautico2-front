@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../../core/services/auth.service';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms'; // No necesario en el componente si no es standalone
-import { CommonModule } from '@angular/common'; // No necesario en el componente si no es standalone
 
 @Component({
   selector: 'app-login',

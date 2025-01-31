@@ -6,6 +6,7 @@ import { ForbiddenComponent } from './features/forbidden/forbidden.component';
 import { Error404Component } from './features/error404/error404.component';
 import { ViajesComponent } from './features/viajes/viajes.component';
 import { authGuard } from './core/guards/auth.guard';
+import { RegisterComponent } from './features/register/register.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,10 @@ export const routes: Routes = [
   {
     path: 'login', // Página de inicio de sesión
     component: LoginComponent,
+  },
+  {
+    path: 'register', // Página de inicio de sesión
+    component: RegisterComponent,
   },
   {
     path: 'viajes', // Página protegida
